@@ -47,7 +47,7 @@ const EventSchema = new Schema<IEvent>(
     },
     image: {
       type: String,
-      required: [true, 'Image URL is required'],
+//       required: [true, 'Image URL is required'],
       trim: true,
     },
     venue: {
@@ -109,7 +109,7 @@ const EventSchema = new Schema<IEvent>(
 );
 
 // Pre-save hook for slug generation and data normalization
-EventSchema.pre('save', function (next) {
+EventSchema.pre('save', async function () {
   const event = this as IEvent;
 
   // Generate slug
@@ -126,8 +126,6 @@ EventSchema.pre('save', function (next) {
   if (event.isModified('time')) {
     event.time = normalizeTime(event.time);
   }
-
-  next();
 });
 
 
