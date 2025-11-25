@@ -4,7 +4,7 @@ import ExploreBtn from '@/components/ExploreBtn';
 
 import { events } from '@/lib/constants';
 
-const Page = () => {
+const Page = async () => {
   return (
     <section>
 
@@ -17,6 +17,7 @@ const Page = () => {
   <h3>Featured Events</h3>
 
   <ul className="events">
+    
     {events.map((event) => (
       <li key={event.title} className="">
        <EventCard {...event} />
