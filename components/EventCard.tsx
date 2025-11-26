@@ -10,13 +10,6 @@ interface Props {
   slug: string;
 
 
-
-//   description: string;
-//   category: "conference" | "hackathon" | "meetup" | "workshop";
-//   price?: string;
-//   registrationUrl?: string;
-//   organizer: string;
-//   attendees?: number;
 }
 
 const EventCard = ({ title, image, slug, location, date, time }: Props) => {
