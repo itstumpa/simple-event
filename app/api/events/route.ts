@@ -17,6 +17,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // let tags = JSON.parse(formData.get('tags') as string || '[]');
+    // let agenda = JSON.parse(formData.get('agenda') as string || '[]');
+
     // Convert formData to object
     const event: any = {};
     const tags: string[] = [];
@@ -85,8 +88,14 @@ export async function POST(req: NextRequest) {
 
     event.image = (uploadResult as { secure_url: string }).secure_url;
 
+    
+
     // Create event with all data
-    const createdEvent = await Event.create(event);   
+    const createdEvent = await Event.create({
+      ...event,
+      tags: tags,
+      agenda: agenda,
+    });   
 
     return NextResponse.json(
       { message: "Event Created Successfully", event: createdEvent },
